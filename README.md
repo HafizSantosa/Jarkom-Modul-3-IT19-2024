@@ -1074,3 +1074,45 @@ Penjelasan:
 - `pm.max_spare_servers`: Menentukan jumlah maksimum proses anak yang diizinkan tetap hidup oleh PHP-FPM saat tidak ada permintaan yang diterima.
 
 ## 20. Nampaknya hanya menggunakan PHP-FPM tidak cukup untuk meningkatkan performa dari worker maka implementasikan Least-Conn pada Stilgar. Untuk testing kinerja dari worker tersebut dilakukan sebanyak 100 request dengan 10 request/second.
+
+Lakukan modifikasi pada kode berikut:
+```
+echo 'upstream weight_round_robin  {
+    server 10.73.1.3;
+    server 10.73.1.4;
+    server 10.73.1.5;
+}
+
+server {
+    listen 80;
+        server_name harkonen.it19.com;
+
+        root /var/www/harkonen.it19.com;
+        index index.html index.htm index.nginx-debian.html;\
+
+        location / {
+            proxy_pass http://weight_round_robin;
+            proxy_set_header    X-Real-IP $remote_addr;
+            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header    Host $http_host;
+        }
+
+    error_log /var/log/nginx/lb_error.log;
+    access_log /var/log/nginx/lb_access.log;
+}' > /etc/nginx/sites-available/balance_load
+
+unlink /etc/nginx/sites-enabled/default
+
+ln -s /etc/nginx/sites-available/balance_load /etc/nginx/sites-enabled/balance_load
+
+service nginx restart
+```
+dengan menambahkan `Least_conn;` seperti ini:
+```
+echo 'upstream laravel_least_conn  {
+    least_conn;
+    server 10.73.1.3;
+    server 10.73.1.4;
+    server 10.73.1.5;
+}
+```
