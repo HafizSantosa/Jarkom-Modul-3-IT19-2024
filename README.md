@@ -8,7 +8,7 @@
 ## Topologi
 ![](/image/Topologi.png "test")
 
-#### 0. Meregister domain name `atreides.yyy.com` untuk worker Laravel mengarah pada `Leto Atreides` dan mendaftarkan domain name `harkonen.yyy.com` untuk worker PHP mengarah pada `Vladimir Harkonen`.
+## 0. Meregister domain name `atreides.yyy.com` untuk worker Laravel mengarah pada `Leto Atreides` dan mendaftarkan domain name `harkonen.yyy.com` untuk worker PHP mengarah pada `Vladimir Harkonen`.
 
 Pertama buat bash untuk memasukkan config untuk meregister domain yang diminta:
 ```
@@ -68,7 +68,7 @@ Kemudian restart service bind9 dengan command:
 service bind9 restart
 ```
 
-#### 1. Melakukan konfigurasi sesuai dengan peta yang sudah diberikan.
+## 1. Melakukan konfigurasi sesuai dengan peta yang sudah diberikan.
 
 <b>Arakis<b>
 ```
@@ -192,7 +192,7 @@ iface eth0 inet static
 	gateway 10.73.4.1
 ```
 
-#### 2. Client yang melalui House Harkonen mendapatkan range IP dari [prefix IP].1.14 - [prefix IP].1.28 dan [prefix IP].1.49 - [prefix IP].1.70
+## 2. Client yang melalui House Harkonen mendapatkan range IP dari [prefix IP].1.14 - [prefix IP].1.28 dan [prefix IP].1.49 - [prefix IP].1.70
 
 prefix IP IT19 = 10.73
 
@@ -221,7 +221,7 @@ service isc-dhcp-server restart
 ```
 Kemudian periksa apakah client di Harkonen sudah dapat akses internet dengan `ping`.
 
-#### 3. Client yang melalui House Atreides mendapatkan range IP dari [prefix IP].2.15 - [prefix IP].2.25 dan [prefix IP].2 .200 - [prefix IP].2.210
+## 3. Client yang melalui House Atreides mendapatkan range IP dari [prefix IP].2.15 - [prefix IP].2.25 dan [prefix IP].2 .200 - [prefix IP].2.210
 
 prefix IP IT19 = 10.73
 
@@ -266,7 +266,7 @@ service isc-dhcp-server restart
 ```
 Kemudian periksa apakah client di Atreides sudah dapat akses internet dengan `ping`.
 
-#### 4. Client mendapatkan DNS dari Princess Irulan dan dapat terhubung dengan internet melalui DNS tersebut.
+## 4. Client mendapatkan DNS dari Princess Irulan dan dapat terhubung dengan internet melalui DNS tersebut.
 
 Setelah kita menjalankan bash pada soal sebelumnya, nodes yang ada pada switch 1 dan 2 seharusnya sudah mendapat akses internet melalui DHCP Server. Untuk melakukan cek kita akan ping salah satu domain di Irulan yaitu `atreides.it19.com`.
 
@@ -274,7 +274,7 @@ Setelah kita menjalankan bash pada soal sebelumnya, nodes yang ada pada switch 1
 
 Client Dmitri sudah dapat mengakses DNS Irulan.
 
-#### 5. Durasi DHCP server meminjamkan alamat IP kepada Client yang melalui `House Harkonen` selama 5 menit sedangkan pada client yang melalui `House Atreides` selama 20 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 87 menit.
+## 5. Durasi DHCP server meminjamkan alamat IP kepada Client yang melalui `House Harkonen` selama 5 menit sedangkan pada client yang melalui `House Atreides` selama 20 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 87 menit.
 
 Untuk itu kita akan menambahkan line pada bash config soal sebelumnya:
 
@@ -324,7 +324,7 @@ Sehingga akan muncul lease time setiap kita mengakses client:
 
 ![alt text](/image/2.png)
 
-#### 6. setiap worker(harkonen) PHP, untuk melakukan konfigurasi virtual host untuk website yang telah disediakan dengan menggunakan `php 7.3`.
+## 6. setiap worker(harkonen) PHP, untuk melakukan konfigurasi virtual host untuk website yang telah disediakan dengan menggunakan `php 7.3`.
 
 Untuk itu kita akan membuat bash untuk melakukan instalasi segala kebutuhan untuk setup setiap PHP Worker:
 
@@ -376,7 +376,7 @@ lynx http://10.73.1.3/
 ![alt text](/image/3.png)
 diatas adalah tampilan jika berhasil.
 
-#### 7. Aturlah agar `Stilgar` dari `Fremen` dapat dapat bekerja sama dengan maksimal, lalu lakukan testing dengan 5000 request dan 150 request/second.
+## 7. Aturlah agar `Stilgar` dari `Fremen` dapat dapat bekerja sama dengan maksimal, lalu lakukan testing dengan 5000 request dan 150 request/second.
 
 Untuk membuat Stilgar menjadi Load Balancer, buat bash untuk melakukan instalasi keperluan Load Balancer:
 
@@ -427,7 +427,7 @@ Hasilnya sebagai berikut:
 
 Didapatkan hasil dengan 2635.82 request per second, selama 1.897 detik, dan terdapat 0 failed request
 
-#### 8. Menuliskan peta tercepat menuju spice, lalu buatlah analisis hasil testing dengan 500 request dan 50 request/second masing-masing algoritma Load Balancer.
+## 8. Menuliskan peta tercepat menuju spice, lalu buatlah analisis hasil testing dengan 500 request dan 50 request/second masing-masing algoritma Load Balancer.
 
 Ada empat jenis algortima load balancer yang digunakan pada pengerjaan nomor ini, yaitu:
 1. Generic Hash
@@ -544,7 +544,7 @@ ab -n 500 -c 50 http://10.73.4.2/round_robin/
 Berikut adalah perbandingan Request per Second antar algoritma Load Balancer:
 ![alt text](/image/9.png)
 
-#### 9. Dengan menggunakan algoritma Least-Connection, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 1000 request dengan 10 request/second, kemudian tambahkan grafiknya pada peta.
+## 9. Dengan menggunakan algoritma Least-Connection, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 1000 request dengan 10 request/second, kemudian tambahkan grafiknya pada peta.
 
 1. Dengan 3 Worker
 ```
@@ -568,7 +568,7 @@ Setelah dilakukan benchmark terhadap jumlah worker, didapatkan perbandingan seba
 
 ![alt text](image/13.png)
 
-#### 10. Selanjutnya coba tambahkan keamanan dengan konfigurasi autentikasi di Load Balancer dengan dengan kombinasi username: `“secmart”` dan password: `“kcksit19”`. Terakhir simpan file `“htpasswd”` nya di `/etc/nginx/supersecret/`.
+## 10. Selanjutnya coba tambahkan keamanan dengan konfigurasi autentikasi di Load Balancer dengan dengan kombinasi username: `“secmart”` dan password: `“kcksit19”`. Terakhir simpan file `“htpasswd”` nya di `/etc/nginx/supersecret/`.
 
 Untuk memberikan auth kita akan menambahkan config pada load balancer sebagai berikut:
 ```
@@ -667,7 +667,7 @@ lynx http://10.42.4.2/least_conn/
 
 Setelah memasukkan Username dan Password yang telah di set pada bash, kita berhasil melakuakan login.
 
-#### 11. Buat untuk setiap request yang mengandung `/dune` akan di proxy passing menuju halaman `https://www.dunemovie.com.au/`.
+## 11. Buat untuk setiap request yang mengandung `/dune` akan di proxy passing menuju halaman `https://www.dunemovie.com.au/`.
 
 Kita akan menambahkan proxy passing pada config Load Balancer tadi:
 ```
@@ -686,7 +686,7 @@ lynx http://10.73.4.2/dune
 ```
 ![alt text](image/14.png)
 
-#### 12. Load Balancer ini hanya boleh diakses oleh client dengan IP `[Prefix IP].1.37`, `[Prefix IP].1.67`, `[Prefix IP].2.203`, dan `[Prefix IP].2.207`.
+## 12. Load Balancer ini hanya boleh diakses oleh client dengan IP `[Prefix IP].1.37`, `[Prefix IP].1.67`, `[Prefix IP].2.203`, dan `[Prefix IP].2.207`.
 
 Prefix IP IT19 = 10.73
 
@@ -705,3 +705,372 @@ location / {
 Config ini akan menerima IP yang ada dalam daftar `allow` dan menolak semua yang tidak. Restart `nginx service` pada Load Balancer kemudian cek pada client menggunakan `lynx` dengan IP yang tidak ada dalam daftar `allow`. Berikut adalah contoh apabila IP tidak terdaftar:
 
 ![alt text](image/15.png)
+
+## 13. Semua data yang diperlukan, diatur pada Chani dan harus dapat diakses oleh Leto, Duncan, dan Jessica.
+
+Tambahkan script berikut pada Chani sebagai Database Server.
+```
+#!/bin/bash
+
+apt update
+apt install mariadb-server -y
+
+service mysql start
+
+mysql <<EOF
+CREATE USER 'kelompokit19'@'%' IDENTIFIED BY 'passwordit19';
+CREATE USER 'kelompokit19'@'localhost' IDENTIFIED BY 'passwordit19';
+CREATE DATABASE dbkelompokit19;
+GRANT ALL PRIVILEGES ON *.* TO 'kelompokit19'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'kelompokit19'@'localhost';
+FLUSH PRIVILEGES;
+quit
+EOF
+
+mysql -u kelompokit19 -p'passwordit19' <<EOF
+SHOW DATABASES;
+quit
+EOF
+
+echo '[client-server]
+
+# Import all .cnf files from configuration directory
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+[mysqld]
+skip-networking=0
+skip-bind-address' >/etc/mysql/my.cnf
+
+service mysql restart
+```
+Lalu melakukan testing dengan connect dari salah satu laravel worker ke database, dengan password `passwordit19`.
+```
+mariadb --host=10.73.2.2 --port=3306 --user=kelompokit19 --password
+```
+
+## 14. Leto, Duncan, dan Jessica memiliki atreides Channel sesuai dengan [quest guide](https://github.com/martuafernando/laravel-praktikum-jarkom) berikut. Jangan lupa melakukan instalasi PHP8.0 dan Composer.
+
+Meakukan install depedency dasar yang digunakan.
+```
+apt-get update
+apt-get install lynx -y
+apt-get install mariadb-client -y
+apt-get install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
+curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+apt-get update
+```
+Kemudian melakukan instalasi kebutuhan `PHP 8.0`
+```
+apt-get install php8.0-mbstring php8.0-xml php8.0-cli php8.0-common php8.0-intl php8.0-opcache php8.0-readline php8.0-mysql php8.0-fpm php8.0-curl unzip wget -y
+apt-get install nginx -y
+service nginx start
+service php8.0-fpm start
+```
+Lalu install `composer`
+```
+wget https://getcomposer.org/download/2.0.13/composer.phar
+chmod +x composer.phar
+mv composer.phar /usr/local/bin/composer
+```
+Melakukan git clone pada repository [quest guide](https://github.com/martuafernando/laravel-praktikum-jarkom) serta jalankan:
+```
+apt-get install git -y
+cd /var/www 
+git clone https://github.com/martuafernando/laravel-praktikum-jarkom
+cd /var/www/laravel-praktikum-jarkom 
+composer update
+```
+Jalankan kode berikut untuk melakukan konfigurasi pada `worker`.
+```
+cd /var/www/laravel-praktikum-jarkom 
+cp .env.example .env
+echo '
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
+
+DB_CONNECTION=mysql
+DB_HOST=10.73.2.2
+DB_PORT=3306
+DB_DATABASE=dbkelompokit19
+DB_USERNAME=kelompokit19
+DB_PASSWORD=passwordit19
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=mt1
+
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_HOST="${PUSHER_HOST}"
+VITE_PUSHER_PORT="${PUSHER_PORT}"
+VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+' > /var/www/laravel-praktikum-jarkom/.env
+cd /var/www/laravel-praktikum-jarkom
+php artisan key:generate
+php artisan config:cache
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+php artisan jwt:secret
+php artisan config:clear
+chown -R www-data.www-data /var/www/laravel-praktikum-jarkom/storage
+
+
+echo '
+ server {
+ 	listen 8001;
+
+ 	root /var/www/laravel-praktikum-jarkom/public;
+
+ 	index index.php index.html index.htm;
+ 	server_name _;
+
+ 	location / {
+ 			try_files $uri $uri/ /index.php?$query_string;
+ 	}
+
+ 	# pass PHP scripts to FastCGI server
+ 	location ~ \.php$ {
+ 	include snippets/fastcgi-php.conf;
+ 	fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+ 	}
+
+    location ~ /\.ht {
+ 			deny all;
+ 	}
+
+    error_log /var/log/nginx/implementasi_error.log;
+    access_log /var/log/nginx/implementasi_access.log;
+ }
+' > /etc/nginx/sites-available/implementasi
+ln -s /etc/nginx/sites-available/implementasi /etc/nginx/sites-enabled/
+unlink /etc/nginx/sites-enabled/default
+
+chown -R www-data.www-data /var/www/laravel-praktikum-jarkom-main/storage
+
+service php8.0-fpm start
+service nginx restart
+```
+Untuk mengecek apakah kode sudah benar bisa menggunakan `nginx -t`. Pada bagian:
+```
+server {
+ 	listen 8001; ...... }
+```
+Portnya diganti sesuai dengan port masing masing worker. Kami membagi port sebagai berikut:
+- 8001: Leto
+- 8002: Duncan
+- 8003: Jessia
+
+Kemudian setelah melakukan konfigurasi, cek dengan menjalankan `lynx localhost:<port worker>`. (Contoh lynx localhost:8001).
+![alt text](https://cdn.discordapp.com/attachments/1021585230844395580/1242701621008404480/284009173-b7daae70-3d92-42c5-8cea-5f846fd02b88.png?ex=664ecb92&is=664d7a12&hm=ee19de5c0e55b0fdd91463283ef1a4bed5d3c6b97c8b3ca631d95acd85676938&)
+
+## 15. Atreides Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada peta.
+POST /auth/register
+
+Buat file `login.json` yang nantinya akan dikirimkan dalam perintah `/POST` pada client
+```
+echo '
+{
+    "username": "kelompokit11",
+    "password": "passwordit11"
+}
+' > /var/www/laravel-praktikum-jarkom/login.json
+```
+jalankan perintah berikut pada client `ab  -n 100 -c 10 -p login.json -T application/json http://10.73.4.2:8001/api/auth/register` Untuk bagian `http://10.73.4.2:8001` disesuaikan dengan ip worker:portnya yang ingin diuji. Disini sebagai contoh digunakan ip:port dari worker Leto.
+
+![alt text](https://cdn.discordapp.com/attachments/1021585230844395580/1242702509445746709/284010542-b9fc7f75-ed95-481d-a58d-287fed049648.png?ex=664ecc66&is=664d7ae6&hm=ecaa8674fa5d7ff342ddc7bca770729c9587a060749b211fa5034b20512e8bf6&)
+
+## 16. Atreides Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada peta.
+POST /auth/login
+
+Jalankan perintah berikut pada client.
+
+`ab  -n 100 -c 10 -p login.json -T application/json http://10.73.4.2:8001/api/auth/login`
+
+File `.JSON` yang digunakan sama seperti no 15.
+
+![alt text](https://cdn.discordapp.com/attachments/1021585230844395580/1242703159957262357/image.png?ex=664ecd01&is=664d7b81&hm=e7b4976938d0c9dabad22b06258880b18b692cf68992afedb2cd79085330623a&)
+
+## 17. Atreides Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada peta.
+GET /me
+
+```
+curl -X POST -H "Content-Type: application/json" -d @regis.json http://10.73.4.2:8001/api/auth/login > login_token.txt
+```
+Kode tersebut akan menyimpan respon `JSON` kedalam `login_token.txt`.
+
+## 18. Untuk memastikan ketiganya bekerja sama secara adil untuk mengatur `atreides` Channel maka implementasikan `Proxy Bind` pada `Stilgar` untuk mengaitkan IP dari Leto, Duncan, dan Jessica.
+```
+echo 'upstream laravel_least_conn  {
+    server 10.73.2.3:8001; #IP Leto
+    server 10.73.2.4:8002; #IP Duncan
+    server 10.73.2.5:8003; #IP Jessica
+}
+
+server {
+    listen 87;
+
+    location /app1 {
+        proxy_pass http://10.73.2.3/;
+        proxy_bind 10.73.2.3; #IP Leto
+        rewrite ^/app1(.*)$ http://10.73.2.3/$1 permanent;
+    }
+
+    location /app2 {
+        proxy_pass http://10.73.2.4/;
+        proxy_bind 10.73.4.4; #IP Duncan
+        rewrite ^/app2(.*)$ http://10.73.2.4/$1 permanent;
+    }
+
+    location /app3 {
+        proxy_pass http://10.73.2.5/;
+        proxy_bind 10.73.2.5; #IP Jessica
+        rewrite ^/app3(.*)$ http://10.73.2.5/$1 permanent;
+    }
+
+    location / {
+        proxy_pass http://laravel_least_conn;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+    }
+
+    error_log /var/log/nginx/lb_error.log;
+    access_log /var/log/nginx/lb_access.log;
+}' >/etc/nginx/sites-available/proxy-bind
+
+unlink /etc/nginx/sites-enabled/default
+
+ln -s /etc/nginx/sites-available/proxy-bind /etc/nginx/sites-enabled/proxy-bind
+
+service nginx restart
+```
+Untuk mengetestnya, jalankan kode berikut pada client:
+```
+ab  -n 100 -c 10 -p login.json -T application/json http://10.73.4.2:87/api/auth/register
+```
+`10.73.4.2` merupakan IP dari `Stilgar`. Setelah dijalankan, pergi ke worker laravel untuk menentukan apakah berhasil melakukan proxy bind dengan mengecek lognya.
+
+Perintah yang digunakan untuk mengecek log adalah dengan
+```
+cat /var/log/nginx/implementasi_access.log
+```
+
+## 19
+Untuk meningkatkan performa dari Worker, coba implementasikan PHP-FPM pada Leto, Duncan, dan Jessica. Untuk testing kinerja naikkan 
+- pm.max_children
+- pm.start_servers
+- pm.min_spare_servers
+- pm.max_spare_servers
+sebanyak tiga percobaan dan lakukan testing sebanyak 100 request dengan 10 request/second kemudian berikan hasil analisisnya pada PDF.
+
+Edit file konfigurasi berikut pada `Stilgar`.
+```
+#!/bin/bash
+echo '[lb_site]
+user = lb_user
+group = lb_user
+listen = /var/run/php8.0-fpm-lb-site.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = <edit here>
+pm.start_servers = <edit here>
+pm.min_spare_servers = <edit here>
+pm.max_spare_servers = <edit here>
+pm.process_idle_timeout = 10s
+
+;' >/etc/php/8.0/fpm/pool.d/lb.conf
+
+groupadd lb_user
+useradd -g lb_user lb_user
+
+/etc/init.d/php8.0-fpm restart
+/etc/init.d/php8.0-fpm status
+```
+Kemudian jalankan testing pada tiap perubahan script. Disini sebagai contoh dilakukan percobaan pada worker Frieren dengan menjalankan kode
+```
+ab  -n 100 -c 10 -p login.json -T application/json http://10.73.4.2:8003/api/auth/register
+```
+script 1:
+```
+pm = dynamic
+pm.max_children = 25
+pm.start_servers = 5
+pm.min_spare_servers = 3
+pm.max_spare_servers = 10
+pm.process_idle_timeout = 10s
+```
+
+script 2:
+```
+pm = dynamic
+pm.max_children = 50
+pm.start_servers = 8
+pm.min_spare_servers = 5
+pm.max_spare_servers = 15
+pm.process_idle_timeout = 10s
+```
+
+Script 3:
+```
+pm = dynamic
+pm.max_children = 75
+pm.start_servers = 10
+pm.min_spare_servers = 5
+pm.max_spare_servers = 20
+pm.process_idle_timeout = 10s
+```
+Penjelasan:
+- `pm.max_children`: Menentukan jumlah maksimum proses anak (child processes) yang PHP-FPM dapat buat untuk melayani permintaan.
+- `pm.start_servers`: Menentukan jumlah proses anak yang akan dibuat saat PHP-FPM pertama kali dijalankan.
+- `pm.min_spare_servers`: Menentukan jumlah minimum proses anak yang akan dijaga hidup oleh PHP-FPM saat tidak ada permintaan yang diterima.
+- `pm.max_spare_servers`: Menentukan jumlah maksimum proses anak yang diizinkan tetap hidup oleh PHP-FPM saat tidak ada permintaan yang diterima.
+
+## 20. Nampaknya hanya menggunakan PHP-FPM tidak cukup untuk meningkatkan performa dari worker maka implementasikan Least-Conn pada Stilgar. Untuk testing kinerja dari worker tersebut dilakukan sebanyak 100 request dengan 10 request/second.
