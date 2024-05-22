@@ -70,7 +70,7 @@ service bind9 restart
 
 ## 1. Melakukan konfigurasi sesuai dengan peta yang sudah diberikan.
 
-<b>Arakis<b>
+### Arakis
 ```
 auto eth0
 iface eth0 inet dhcp
@@ -96,13 +96,13 @@ iface eth4 inet static
 	netmask 255.255.255.0
 ```
 
-<b>Dmitri dan Paul (Client)<b>
+###Dmitri dan Paul (Client)
 ```
 auto eth0
 iface eth0 inet dhcp
 ```
 
-<b>Vladimir (PHP Worker)<b>
+### Vladimir (PHP Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -111,7 +111,7 @@ iface eth0 inet static
 	gateway 10.73.1.1
 ```
 
-<b>Rabban (PHP Worker)<b>
+### Rabban (PHP Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -120,7 +120,7 @@ iface eth0 inet static
 	gateway 10.73.1.1
 ```
 
-<b>Feyd (PHP Worker)<b>
+### Feyd (PHP Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -129,7 +129,7 @@ iface eth0 inet static
 	gateway 10.73.1.1
 ```
 
-<b>Leto (Laravel Worker)<b>
+### Leto (Laravel Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -138,7 +138,7 @@ iface eth0 inet static
 	gateway 10.73.2.1
 ```
 
-<b>Duncan (Laravel Worker)<b>
+### Duncan (Laravel Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -147,7 +147,7 @@ iface eth0 inet static
 	gateway 10.73.2.1
 ```
 
-<b>Jessica (Laravel Worker)<b>
+### Jessica (Laravel Worker)
 ```
 auto eth0
 iface eth0 inet static
@@ -156,7 +156,7 @@ iface eth0 inet static
 	gateway 10.73.2.1
 ```
 
-<b>Irulan (DNS Server)<b>
+### Irulan (DNS Server)
 ```
 auto eth0
 iface eth0 inet static
@@ -165,7 +165,7 @@ iface eth0 inet static
 	gateway 10.73.3.1
 ```
 
-<b>Mohiam (DHCP Server)<b>
+### Mohiam (DHCP Server)
 ```
 auto eth0
 iface eth0 inet static
@@ -174,7 +174,7 @@ iface eth0 inet static
 	gateway 10.73.3.1
 ```
 
-<b>Stilgar (Load Balancer)<b>
+###Stilgar (Load Balancer)
 ```
 auto eth0
 iface eth0 inet static
@@ -183,7 +183,7 @@ iface eth0 inet static
 	gateway 10.73.4.1
 ```
 
-<b>Chani (Database Server)<b>
+### Chani (Database Server)
 ```
 auto eth0
 iface eth0 inet static
