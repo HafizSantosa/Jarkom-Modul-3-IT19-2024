@@ -96,7 +96,7 @@ iface eth4 inet static
 	netmask 255.255.255.0
 ```
 
-###Dmitri dan Paul (Client)
+### Dmitri dan Paul (Client)
 ```
 auto eth0
 iface eth0 inet dhcp
@@ -174,7 +174,7 @@ iface eth0 inet static
 	gateway 10.73.3.1
 ```
 
-###Stilgar (Load Balancer)
+### Stilgar (Load Balancer)
 ```
 auto eth0
 iface eth0 inet static
