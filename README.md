@@ -194,7 +194,7 @@ iface eth0 inet static
 
 ## 2. Client yang melalui House Harkonen mendapatkan range IP dari [prefix IP].1.14 - [prefix IP].1.28 dan [prefix IP].1.49 - [prefix IP].1.70
 
-prefix IP IT19 = 10.73
+Prefix IP IT19 = 10.73.
 
 Untuk memberikan akses internet kepada Harkonen(switch 1), lakukan configurasi berikut pada mohiam(DHCP Server).
 
